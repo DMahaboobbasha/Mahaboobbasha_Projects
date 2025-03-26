@@ -46,7 +46,15 @@ NAT Gateway `1 per AZ` -> VPC Endpoints `None` (no need in this project) -> `Tic
 On next page AWS will show all the resources that are being created & also `Elastic IP Address`.
 -> _Here Elastic IP is attached to NAT Gateway which is used to hide IP Address of servers in Private subnet when these servers are accessing Internet._
 
-Now go to `VPC` Service -> Open your VPC **aws-prod-example**. Scroll down -> **Resource Map** to 
+Now go to `VPC` Service -> Open your VPC **aws-prod-example**. Scroll down  -> **Resource Map** to 
 see `VPC Architecture` you created.
 
-Till now 
+Till now we created VPC Componenets and `Other things` which needs to be created are **`EC2 Instances (servers) in Private subnets`** using `Auto-Scaling Group` and `Load Balaner`. But here
+you also need to create a **Bastion Host** in `Public Subnet`. Because since you are creating 2 EC2 Instances in Private subnets but to access these instances and install Python Application and 
+`Web Page` we need a Bastion Host in public subnet to access your Private Subnet Instance. 
+
+So let's create `Auto-Scaling Group`. 1st Search **EC2** -> click it and on left-side search Auto-Scaling Groups. Open it and click `Create Auto Scaling Group`. -> 
+              _`In AWS, ASG can,t be created without Launch Template. So 1st you need create a ASG 
+                Launch Template which is used as a reference in creating other ASG and also when 
+                **Scaling-Up** new instances during high traffic.`_
+
