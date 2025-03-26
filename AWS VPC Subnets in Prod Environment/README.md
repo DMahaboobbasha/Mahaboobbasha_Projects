@@ -15,7 +15,7 @@
   and receive traffic through Load Balancer.
   Servers can connect to the internet using NAT Gateway.
 
-  ![image](AWS VPC Subnets in Prod Environment/AWS VPC Private-Public subnet Architecture.png)
+  ![image](AWS VPC Private-Public subnet Architecture.png)
 
 #### **AWS Services used in this Project:**
 - VPC
