@@ -1,1 +1,6 @@
 
+ #**AWS VPC with Public-Private Subnet in Production**
+
+
+![Image](https://github.com/user-attachments/assets/326effde-9cfb-47f1-810a-c41cbbd57394)
+
