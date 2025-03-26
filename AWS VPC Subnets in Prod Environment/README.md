@@ -28,4 +28,15 @@
 
 ##### Let's Implement this Project in AWS
 
-Let's open your `AWS account` -> `Home Console` -> search `VPC`. 
+Let's open your `AWS account` -> `Home Console` -> search `VPC`. Open `VPC` -> Here you'll 
+have 2 options:-   1.`VPC Only`  2.`VPC and more`.
+
+Select 2.`VPC and more` on right-side you can see a PREVIEW of the `Architecture of the resources`
+which AWS will be creating for us.
+      - Two Private & Public Subnets -> each one in 2 Availability Zones.
+      - Route Tables
+      - Internet Gateway
+      - NAT Gateway
+      - S3 Endpoint (optional).
+
+Next, `#Name tag auto-generation` -> "aws-prod-example"
