@@ -42,3 +42,11 @@ which AWS will be creating for us.
 Next, `#Name tag auto-generation` -> "aws-prod-example". Can leave IPv4 (default) * select `No IPv6`
 -> Number of Availability Zones `2` , Number of Public Subnet `2` , Number of Private Subnet `2`
 NAT Gateway `1 per AZ` -> VPC Endpoints `None` (no need in this project) -> `Tick` Enable DNS Hostname and Enable DNS Resolution, -> click **`Create VPC`**
+
+On next page AWS will show all the resources that are being created & also `Elastic IP Address`.
+-> _Here Elastic IP is attached to NAT Gateway which is used to hide IP Address of servers in Private subnet when these servers are accessing Internet._
+
+Now go to `VPC` Service -> Open your VPC **aws-prod-example**. Scroll down -> **Resource Map** to 
+see `VPC Architecture` you created.
+
+Till now 
