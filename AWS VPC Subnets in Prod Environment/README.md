@@ -15,7 +15,7 @@
   and receive traffic through Load Balancer.
   Servers can connect to the internet using NAT Gateway.
 
-  ![image](![image](https://github.com/user-attachments/assets/751207c0-a21c-4171-bbef-95980caf0ed9)
+  ![image](https://github.com/user-attachments/assets/751207c0-a21c-4171-bbef-95980caf0ed9)
 )
 
 #### **AWS Services used in this Project:**
