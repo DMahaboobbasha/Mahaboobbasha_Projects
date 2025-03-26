@@ -14,3 +14,15 @@
 - Servers run in the private subnets, launched (scaled up) & terminated by using Auto-Scaling Group 
   and receive traffic through Load Balancer.
   Servers can connect to the internet using NAT Gateway.
+
+#### **AWS Services used in this Project:**
+- VPC
+- Internet Gateway
+- Application Load Balancer
+- Auto-Scaling Group
+- NAT Gateway
+- EC2 Instances
+
+##### Let's Implement this Project in AWS
+
+Let's open your `AWS account` -> `Home Console` -> search `VPC`. 
