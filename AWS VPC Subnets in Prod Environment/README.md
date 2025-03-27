@@ -108,7 +108,7 @@ _`Pick one u already downloaded into your system or create new and download pem 
   Terminal . Even to login to Bastion Host we need same Key Pair Value as you gave same Key Pair   
   Value to both Private and Bastion instances. 
 
-  #######**Open Terminal** 
+  ####### **Open Terminal** 
   here go to dowloads folder where you have your instances `Key Pair Values` and use 
   _#ls | grep aws-login.pem_
   `aws-login.pem`  will show file. _now you'll copy this file from your local system to Bastion 
@@ -137,12 +137,13 @@ _`Pick one u already downloaded into your system or create new and download pem 
     only in 1st 2-3 web Tabs you will access thsi page later you will get `ERROR` as entire
     traffic will distributed to 1st subnet and when traffic will be distributed to 2nd subnet.
     Since in this subnet no applicaton and html page wasn't installed will get   ERROR`.
-
-   ########**Let's Create Load Balancer**
+    
+    
+    ######## **Let's Create Load Balancer**
     Now let's create your Load Balancer and attach these 2 Private subnets as `Target Groups` 
     and try to access your `html page` from internet.
-
-    Go to **EC2** -> Left-side -> Click **Load Balancers** 
+    
+    Go to __EC2__ -> Left-side -> Click **Load Balancers** 
 
 
     
