@@ -57,4 +57,6 @@ So let's create `Auto-Scaling Group`. 1st Search **EC2** -> click it and on left
               _`In AWS, ASG can,t be created without Launch Template. So 1st you need create a ASG 
                 Launch Template which is used as a reference in creating other ASG and also when 
                 **Scaling-Up** new instances during high traffic.`_
-
+                
+Here, Launch template -> click `Create a launch template` -> **Launch template Name** `aws-prod-example` -> **Template Version Description** `Proof of AWS Private Subnet for App deploy`. -> **AMI** `ubuntu 22.04` (as per your need). -> **Instance type** ` t2.micro` -> **key pair value**
+-`Pick one u already downloaded into your system or create new and download pem file for logging in SSH`- 
