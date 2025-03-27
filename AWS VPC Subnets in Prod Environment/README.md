@@ -76,8 +76,7 @@ _`Pick one u already downloaded into your system or create new and download pem 
   Back to creating Auto-Scaling Group `refresh page` -> **ASG Name** ` aws-prod-example`  **Launch 
   Template** `aws-prod-example`(which you created just now) -> click `Next` **VPC** `aws-prod- 
   example`. **Availability Zones & Subnets** select _2 AZs and select only private subnet in each
-  AZ_  -->   _because you'll deploy ASG in private subnets and attach to other private instances in 
-  2 AZs._ -> click **Next** -> **Load Balancing** choose `No Load Balancer` (as you're going to 
+  AZ_  -->   _because you'll deploy ASG in private subnets and attach to other private instances     in 2 AZs._ -> click **Next** -> **Load Balancing** choose `No Load Balancer` (as you're going to 
   it separately late).   _Because in this project " ASG " is in Private Subnets and You'll create
   " Load Balancer " in Public Subnets. -> select `No VPC Lattice Services` -> **Health Checks**  
   `300` -> **NEXT** -> **Group Size** -> **Desired Capacity** `2`  **Minimum Capacity** `1` 
@@ -128,22 +127,65 @@ _`Pick one u already downloaded into your system or create new and download pem 
   server in this private subnet through Terminal (which is preinstalled with ubuntu OS, if not use 
   _#sudo apt install Python3_ to install python) and using this command run Python server
   _#python3 -m http.server 8000_  
+ 
   > [!NOTE]
   > 8000 is python port we allowed in private SG.
 
+  ######## **Let's Create Load Balancer**
+  Now let's create your Load Balancer and attach these 2 Private subnets as `Target Groups` 
+  and try to access your `html page` from internet.
+  Go to __EC2__ -> Left-side -> Click **Load Balancers** --> click **Create Load Balancer** 
+  -> select **Application Load Balancer**  _`Other Load Balancers have different purpose_`
+  -> **Create**. 
+
+  > [!NOTE]
+  > Application Load Balancer distributes **HTTP** & **HTTPS** traffic across multiple
+    Targets as `EC2`  `Microservices`  `Containers`.  **This takes place at Layer 7.**
+
+  On next page **Load Balancer Name** `aws-prod-example` -> **Scheme** `Internet-facing` ->
+  select `IPv4` -->> **Network Mapping** -> **VPC** `aws-prod-example` -> **Mapping** 
+  `select both availability zones and select public subnet in both AZs`. 
+  **Security Group** `aws-prod-example`  _because in this SG you allowed ports you need_
+  **Listener & Routing** -> **Protocol** `HTTP`**Port** `80`  click **Create Target Group** ->
+  select **Instances** -> **Target Group Name** `aws-prod-example` -> select `HTTP1` -> **NEXT**
+  select `2 Private Instances` as Target Groups -> below click **include as pending below** ->
+  **Create Target Group**  _<ins>Wait till Target Group is created.</ins>_
+
+  Now go back to Load Balancer page -> refresh near `Target Group` -->> select **Now created 
+  <ins>Target Group</ins>**  -> scroll down -> click **Create Load Balancer**. 
+
+  After few minutes click `View Load Balancer` -> open your Load Balancer -> scroll down -> 
+  in **Listeners** -> check `<ins>PORT you got ERROR as HTTP:80</ins>`. Because in your Security
+  Group you didn't allow **HTTP 80** as an `inbound rule`.
+
+  So, now go to **Security Group** in EC2 or there only. Scroll down click **Add inbound rule**
+  **Type** `HTTP` **PORT** `80` **Source** `Anywhere IPv4` -> click **Save Rule.**
+  Now go to **Load Balancer** `refresh`
+
+  Let's Access **HTML Page** you created in your 1st Private Subnet by copying DNS link of
+  Load Balancer and Paste in web browser tab **Got our page output**
+
+  **Congratulations, You implemented your AWS VPC Project successfully.**
+
+  But,
   > [!IMPORTANT]
   > This application and html page is running only in 1st private subnet but not on 2nd Private
     subnet. So after creating Load Balancer when you will access this html page from internet,
-    only in 1st 2-3 web Tabs you will access thsi page later you will get `ERROR` as entire
+    only in 1st 2-3 web Tabs you will access this page later you will get `ERROR` as entire
     traffic will distributed to 1st subnet and when traffic will be distributed to 2nd subnet.
-    Since in this subnet no applicaton and html page wasn't installed will get   ERROR`.
-    
-    
-    ######## **Let's Create Load Balancer**
-    Now let's create your Load Balancer and attach these 2 Private subnets as `Target Groups` 
-    and try to access your `html page` from internet.
-    
-    Go to __EC2__ -> Left-side -> Click **Load Balancers** 
+    will get  `ERROR`  since in this subnet applicaton and html page wasn't installed. Because
+    as you are using Load Balancer the user traffic is 1st equally [50%-50%] distributed among
+    two private instances.
+
+ Now to fix this, open **Target Group** and can see **Unhealthy**, because your entire internet
+ traffic is going to only one healthy `private subnet` and not 2nd. 
+ Login [SSH] into 2nd Private Subnet through Terminal. Install Python3 application and save your 
+ **HTML Page** and refresh Load Balancer and access the site (HTML) in multiple tabs and web 
+ browsers. 
+
+
+ You successfully completed and did all troubleshooting required to launch your VPC and access
+ site. 
 
 
     
