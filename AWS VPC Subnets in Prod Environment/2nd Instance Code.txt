@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AWS VPC Private-Public Subnets</title>
+</head>
+<body>
+
+<h1>This is my second Private Instance</h1>
+<p> I'm Happy My Project is executed successfully </p>
+
+</body>
+</html>
