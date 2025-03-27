@@ -61,7 +61,7 @@ So let's create `Auto-Scaling Group`. 1st Search **EC2** -> click it and on left
 Here, Launch template -> click `Create a launch template` -> **Launch template Name** `aws-prod-example` -> **Template Version Description** `Proof of AWS Private Subnet for App deploy`. -> **AMI** `ubuntu 22.04` (as per your need). -> **Instance type** ` t2.micro` -> **key pair value**
 _`Pick one u already downloaded into your system or create new and download pem file for logging in SSH.`_ 
 
- ###### * Network Settings:-
+ ###### **Network Settings:-**
  **Subnet** `no change` -> **Create Security Group** ` aws-prod-example` -> **Description** 
  `Allows SSH Access` **VPC** select`which we created`  --> click **Add inbound Secrurity Group 
   rule**  _`As you are going to create/install a Python Application in our server/instance and 
@@ -75,5 +75,35 @@ _`Pick one u already downloaded into your system or create new and download pem 
 
   Back to creating Auto-Scaling Group `refresh page` -> **ASG Name** ` aws-prod-example`  **Launch 
   Template** `aws-prod-example`(which you created just now) -> click `Next` **VPC** `aws-prod- 
-  example`. **Availability Zones & Subnets** select `2 AZs and select only private subnet in each
-  AZ --> _because you'll deploy ASG in private subnets and attach to other private instances in 2 AZs_` 
+  example`. **Availability Zones & Subnets** select _2 AZs and select only private subnet in each
+  AZ_  -->   _because you'll deploy ASG in private subnets and attach to other private instances in 
+  2 AZs._ -> click **Next** -> **Load Balancing** choose `No Load Balancer` (as you're going to 
+  it separately late).   _Because in this project " ASG " is in Private Subnets and You'll create
+  " Load Balancer " in Public Subnets. -> select `No VPC Lattice Services` -> **Health Checks**  
+  `300` -> **NEXT** -> **Group Size** -> **Desired Capacity** `2`  **Minimum Capacity** `1` 
+  **Maximum Capacity** `4`.  -> **Scaling Policies** `None`. -> **NEXT** -> **NEXT** -> **NEXT**.
+  --> **Create Auto Scaling Group.**
+
+  _Now let's check if your ASG created EC2 Instances you asked above in different AZs_.   Go to EC2
+  Instance -> check these instances AZs beside their ID.
+
+  Before creating Load Balancer ->> Let's install Python application in one of the Private subnet 
+  (to check the working of Load Balancer in both private instances). But to install application in 
+  private subnet you need to login to that subnet, -->> to login we need `public IP` which is not 
+  attached to private subnet.  So you need a **Bastion Host** in public subnet through which you 
+  are going to Login to Private subnet. 
+
+  _**Bastion Host** which acts as a mediator between Private subnet & External person who is trying
+   to login to Private subnet through Public subnet._ 
+  
+  **TO CREATE A BASTION HOST** >> go to EC2 Console -> `Instances` -> **Launch Instance.**
+  -->> **Name** `Bastion Host` -> **AMI** `ubuntu 22.04` -> **Instance Type** `t2.micro` ->
+  **Key Pair Value** `select one you downloaded` -> **Network Settings** -> **Edit**  -->
+  **VPC** `aws-prod-example` **Subnet** select`public-east-1a` **Auto-assign public IP** `Enable`
+  select `Create Security Group` (_as this SG is in public subnet_)  **Security Group name**
+  `default(wizard)` but in **inbound rule** add `SSH Port 22`. -->>  **Launch Instance**.
+
+  _Now to install Python application in Private subnet, you need to login to Private subnet and 
+  for this you need Key Pair Value to be inside your **Bastion Host** we copy this value in 
+  Terminal . Even to login to Bastion Host we need same Key Pair Value as you gave same Key Pair   
+  Value to both Private and Bastion instances. 
