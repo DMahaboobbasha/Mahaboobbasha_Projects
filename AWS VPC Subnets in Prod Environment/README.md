@@ -131,6 +131,21 @@ _`Pick one u already downloaded into your system or create new and download pem 
   > [!NOTE]
   > 8000 is python port we allowed in private SG.
 
+  > [!IMPORTANT]
+  > This application and html page is running only in 1st private subnet but not on 2nd Private
+    subnet. So after creating Load Balancer when you will access this html page from internet,
+    only in 1st 2-3 web Tabs you will access thsi page later you will get `ERROR` as entire
+    traffic will distributed to 1st subnet and when traffic will be distributed to 2nd subnet.
+    Since in this subnet no applicaton and html page wasn't installed will get   ERROR`.
+
+   ########**Let's Create Load Balancer**
+    Now let's create your Load Balancer and attach these 2 Private subnets as `Target Groups` 
+    and try to access your `html page` from internet.
+
+    Go to **EC2** -> Left-side -> Click **Load Balancers** 
+
+
+    
   
 
   
