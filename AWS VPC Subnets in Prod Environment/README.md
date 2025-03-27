@@ -128,7 +128,8 @@ _`Pick one u already downloaded into your system or create new and download pem 
   server in this private subnet through Terminal (which is preinstalled with ubuntu OS, if not use 
   _#sudo apt install Python3_ to install python) and using this command run Python server
   _#python3 -m http.server 8000_  
-  > [!Note] > 8000 is python port we allowed in private SG.
+  > [!NOTE]
+  > 8000 is python port we allowed in private SG.
 
   
 
