@@ -123,12 +123,14 @@ _`Pick one u already downloaded into your system or create new and download pem 
 
 
   Now You're inside Private subnet, let's install Python Application and create a small html page
-  to access this page from internet using commands
-  _#vim index.html_   this opens text editor -> let's write a small html code (index.html) above 
-  inside this vim file and save with press ESCAPE + _#:wq!_
-  Now you will run Python server in this private subnet(which is preinstalled with ubuntu OS, if 
-  use _#sudo apt install Python3_) using this command 
-  _#python3 -m http.server 8000_     > [!Note] 8000 is python port we allowed in private SG.
+  using commands _#vim index.html_   this opens text editor -> let's write a small html code 
+  (index.html) inside this vim file and save with press ESCAPE + _#:wq!._  Now you will run Python 
+  server in this private subnet through Terminal (which is preinstalled with ubuntu OS, if not use 
+  _#sudo apt install Python3_ to install python) and using this command run Python server
+  _#python3 -m http.server 8000_  
+  > [!Note] 8000 is python port we allowed in private SG.
+
+  
 
   
   
