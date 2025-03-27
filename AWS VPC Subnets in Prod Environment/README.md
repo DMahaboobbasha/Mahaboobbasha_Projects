@@ -61,7 +61,7 @@ So let's create `Auto-Scaling Group`. 1st Search **EC2** -> click it and on left
 Here, Launch template -> click `Create a launch template` -> **Launch template Name** `aws-prod-example` -> **Template Version Description** `Proof of AWS Private Subnet for App deploy`. -> **AMI** `ubuntu 22.04` (as per your need). -> **Instance type** ` t2.micro` -> **key pair value**
 _`Pick one u already downloaded into your system or create new and download pem file for logging in SSH.`_ 
 
- ######*Network Settings:-
+ ###### * Network Settings:-
  **Subnet** `no change` -> **Create Security Group** ` aws-prod-example` -> **Description** 
  `Allows SSH Access` **VPC** select`which we created`  --> click **Add inbound Secrurity Group 
   rule**  _`As you are going to create/install a Python Application in our server/instance and 
@@ -76,4 +76,4 @@ _`Pick one u already downloaded into your system or create new and download pem 
   Back to creating Auto-Scaling Group `refresh page` -> **ASG Name** ` aws-prod-example`  **Launch 
   Template** `aws-prod-example`(which you created just now) -> click `Next` **VPC** `aws-prod- 
   example`. **Availability Zones & Subnets** select `2 AZs and select only private subnet in each
-  AZ --> _ because you'll deploy ASG in private subnets and attach to other private instances in 2 AZs_` 
+  AZ --> _because you'll deploy ASG in private subnets and attach to other private instances in 2 AZs_` 
