@@ -107,3 +107,31 @@ _`Pick one u already downloaded into your system or create new and download pem 
   for this you need Key Pair Value to be inside your **Bastion Host** we copy this value in 
   Terminal . Even to login to Bastion Host we need same Key Pair Value as you gave same Key Pair   
   Value to both Private and Bastion instances. 
+
+  #######**Open Terminal** 
+  here go to dowloads folder where you have your instances `Key Pair Values` and use 
+  _#ls | grep aws-login.pem_
+  `aws-login.pem`  will show file. _now you'll copy this file from your local system to Bastion 
+  Host before even logging into Bastion using command  _#scp -i /users/Mahaboob/Downloads/aws-
+  login.pem    /users/Mahaboob/Downloads/aws-login.pem  ubuntu@**Bastion PublicIP**:/home/ubuntu._
+  Now terminal will ask to click `Yes`.   -->> Key pair value copied into Bastion.
+
+  Now let's login to **Bastion Host** and check pem file using command
+  _#ssh -i aws-login.pem ubuntu@BastionPublicIP_  `logged into Bastion`
+  Now let's login to **Private Subnet 1st** to install Python Applicatoin using command
+  _#ssh -i aws-login.pem ubuntu@privateInstancePrivateIP_    `$ yes`   `logged in`
+
+
+  Now You're inside Private subnet, let's install Python Application and create a small html page
+  to access this page from internet using commands
+  _#vim index.html_   this opens text editor -> let's write a small html code (index.html) above 
+  inside this vim file and save with press ESCAPE + _#:wq!_
+  Now you will run Python server in this private subnet(which is preinstalled with ubuntu OS, if 
+  use _#sudo apt install Python3_) using this command 
+  _#python3 -m http.server 8000_     > [!Note] 8000 is python port we allowed in private SG.
+
+  
+  
+  
+
+  
